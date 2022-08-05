@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Card Game</title>
+  <script src="./logic/all4slogic.js" type="module"></script>
+  <link rel="stylesheet" href="../main.css">
+
+  <script>
+    console.log()
+  </script>
+<style>
+.hand {
+  margin:20px;
+  display:  grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(52, 22px);
+  transition: grid-template-columns 0.5s;
+}
+
+.hand:hover {
+  grid-template-columns: repeat(52, 120px);
+}
+
+.card {
+  box-shadow: 2px 2px 2px 2px #00000077;
+  border-radius: 5px;
+  background-color: #ffffff;
+  width: 120px;
+  height: 150px;
+
+  display: grid;
+  grid-template-columns: 30px 60px 30px;
+  grid-template-rows: 35px 80px 35px;
+  align-items: center;
+  justify-items: center;
+
+  position: relative;
+}
+
+.tl {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  padding: 4px;
+  font-size: 0.8rem;
+}
+
+.m {
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  font-size: 60px;
+}
+
+.br {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+  padding: 4px;
+  font-size: 0.8rem;
+  transform: rotate(180deg);
+}
+
+.red {
+  color: red;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color:#598e3c;
+}
+body {
+  background-color:#598e3c;
+}
+</style>
+</head>
+<body>
+  <div id="table"></div>
+</body>
+</html>
