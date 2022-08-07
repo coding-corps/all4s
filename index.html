@@ -13,6 +13,58 @@
     console.log()
   </script>
 <style>
+.flip-card-back {
+      background-image: url(./files/redback.png);
+      background-size: 100% 100%;
+    }
+
+.animated_div.animated {opacity: 1;}
+
+.animated_div { opacity: 0;}
+ 
+@keyframes animated_div
+{
+0% {transform: rotate(0deg);left:500px; opacity: 1}
+100% {transform: rotate(-360deg);left:0px;opacity: 1}
+}
+
+@-webkit-keyframes animated_div
+{
+0% {-webkit-transform: rotate(0deg);left:500px; opacity: 1}
+100% {-webkit-transform: rotate(-360deg);left:0px; opacity: 1}
+}
+
+@-moz-keyframes animated_div
+{
+0%  {-moz-transform: rotate(0deg);left:500px; opacity: 1}
+100% {-moz-transform: rotate(-360deg);left:0px; opacity: 1}
+}
+
+@-o-keyframes animated_div
+{
+0% {transform: rotate(0deg);left:500px; opacity: 1}
+100% {transform: rotate(-360deg);left:0px; opacity: 1}
+}
+
+.animated_div {
+animation:animated_div;
+animation-duration: 1s;
+animation-fill-mode: forwards;
+
+-moz-animation: animated_div;
+-moz-animation-duration: 1s;
+-moz-animation-fill-mode: forwards;
+
+-webkit-animation: animated_div;
+-webkit-animation-duration: 1s;
+-webkit-animation-fill-mode: forwards;
+
+-o-animation:animated_div;
+-o-animation-duration: 1s;
+-o-animation-fill-mode: forwards;
+
+}
+
 .hand {
   margin:20px;
   display:  grid;

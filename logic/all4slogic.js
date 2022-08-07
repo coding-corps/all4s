@@ -1,3 +1,4 @@
+
 const CARD_VALUE_MAP = {
   2: 2,
   3: 3,
@@ -106,10 +107,11 @@ export class Game {
     var p = positions[0];
     var dealerPos = 0;
    
+    var del = 0 
     do {
       var card = starting.deal();
       this.players[p - 1].hand.push(card);
-          card.getHTML("player"+p)
+          card.dealHTML("player"+p, del)
       if (card.value === "J") {
         this.players[p - 1].dealer  = true
         dealerPos = p-1
@@ -120,9 +122,12 @@ export class Game {
       } else {
       p++
     }
-  
+    del = del + 0.3
+
    } while (card.value !== "J");
-    console.log('player',dealerPos+1 , "will deal first" )
+   var dealer = dealerPos+1
+   var msg = 'player '+dealer+' will deal first'
+   setTimeout(function(){ alert(msg ); }, (del*1000)+600);
     console.log('player',dealerPos+1 ,  this.players[dealerPos])
   }
 
@@ -146,8 +151,17 @@ export class Card {
     return this.value;
   }
 
+  dealHTML(hand, del) {
+    document.getElementById(hand).innerHTML += '<div class="card animated_div" style="color:'+this.color+'; animation-delay: '+del+'s; "><div class="tl">'+ this.value + this.suit +'</div> <div class="m">'+ this.suit+ '</div><div class="br">'+ this.value + this.suit +'</div></div>';
+  }
   getHTML(hand) {
-    document.getElementById(hand).innerHTML += '<div class="card" style="color:'+this.color+'; "><div class="tl">'+ this.value + this.suit +'</div> <div class="m">'+ this.suit+ '</div><div class="br">'+ this.value + this.suit +'</div></div>';
+    document.getElementById(hand).innerHTML += '<div class="card" style="color:'+this.color+';"><div class="tl">'+ this.value + this.suit +'</div> <div class="m">'+ this.suit+ '</div><div class="br">'+ this.value + this.suit +'</div></div>';
+  }
+  getFaceDown(hand){
+    document.getElementById(hand).innerHTML += '<div class="card flip-card-back" style="color:'+this.color+';"><div class="tl">'+ this.value + this.suit +'</div> <div class="m">'+ this.suit+ '</div><div class="br">'+ this.value + this.suit +'</div></div>';
+  }
+  dealFaceDownHTML(hand, del) {
+    document.getElementById(hand).innerHTML += '<div class="card flip-card-back animated_div"; style="animation-delay: '+del+'s; "></div>';
   }
 }
 export class Team {
@@ -307,13 +321,17 @@ function startGame() {
   // allfours
   var p1 = new Player();
   var p2 = new Player();
-  var prs = [p1, p2];
+  var p3 = new Player();
+  var p4 = new Player();
+  var prs = [p1, p2,p3,p4];
   var game = new Game(prs);
 
   game.setUpHands(prs.length)
 
   game.firstJack();
 
+  game.deal();
+  
   console.log("game", game);
 
   // const deckMidpoint = Math.ceil(deck.numberOfCards / 2)
